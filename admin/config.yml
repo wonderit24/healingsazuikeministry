@@ -1,0 +1,197 @@
+backend:
+  name: turbo-github
+  branch: main
+  turbo_site_id: SET_AFTER_OWNER_SETUP
+
+publish_mode: editorial_workflow
+media_folder: public/images/uploads
+public_folder: /public/images/uploads
+
+collections:
+  - name: site_content
+    label: Site content
+    files:
+      - name: site
+        label: Page copy and contact details
+        file: content/site.json
+        fields:
+          - { label: Full name, name: fullName, widget: string }
+          - { label: Home introduction, name: homeIntroduction, widget: text }
+          - { label: Home mission statement, name: homeMission, widget: text }
+          - { label: Biography, name: biography, widget: markdown }
+          - { label: Vision, name: vision, widget: text }
+          - { label: Mission, name: mission, widget: text }
+          - { label: Public email, name: publicEmail, widget: string, required: false }
+          - { label: Public phone, name: publicPhone, widget: string, required: false }
+          - { label: Website tagline, name: tagline, widget: string }
+          - label: Explore menu links
+            name: navigation
+            widget: list
+            required: false
+            summary: '{{fields.label}}'
+            fields:
+              - { label: Link text, name: label, widget: string }
+              - { label: Link URL, name: url, widget: string }
+
+  - name: pages
+    label: Website pages
+    files:
+      - name: pages
+        label: Additional pages
+        file: content/pages.json
+        fields:
+          - label: Pages
+            name: pages
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - { label: Page title, name: title, widget: string }
+              - { label: URL slug, name: slug, widget: string }
+              - { label: Menu label, name: menuLabel, widget: string, required: false }
+              - { label: Short introduction, name: summary, widget: text }
+              - { label: Page content, name: body, widget: markdown }
+              - { label: Page photograph, name: image, widget: image, required: false }
+              - { label: SEO title, name: seoTitle, widget: string, required: false }
+              - { label: SEO description, name: seoDescription, widget: text, required: false }
+              - { label: Publish page, name: published, widget: boolean, default: false }
+
+  - name: books
+    label: Books and resources
+    files:
+      - name: catalogue
+        label: Book catalogue
+        file: content/books.json
+        fields:
+          - label: Books
+            name: books
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: description, widget: text, required: false }
+              - { label: Intended audience, name: audience, widget: string, required: false }
+              - { label: Cover image, name: cover, widget: image, required: false }
+              - { label: Purchase link, name: purchaseUrl, widget: string, required: false }
+              - { label: Feature on homepage, name: featured, widget: boolean, default: false }
+              - { label: Catalogue status, name: status, widget: select, options: [To be confirmed, Published, Coming soon] }
+          - label: Growth Diet resources
+            name: growthDietResources
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: description, widget: text, required: false }
+              - { label: Resource link, name: url, widget: string, required: false }
+              - { label: Download, name: file, widget: file, required: false }
+          - label: Free downloadable resources
+            name: freeResources
+            widget: list
+            required: false
+            summary: '{{fields.title}}'
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Description, name: description, widget: text, required: false }
+              - { label: Intended audience, name: audience, widget: string, required: false }
+              - { label: Download, name: file, widget: file }
+
+  - name: articles
+    label: Articles
+    files:
+      - name: articles
+        label: Article library
+        file: content/articles.json
+        fields:
+          - label: Articles
+            name: articles
+            widget: list
+            summary: '{{fields.title}} · {{fields.date}}'
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: URL slug, name: slug, widget: string }
+              - { label: Category, name: category, widget: select, options: [Faith and Christian Living, Purpose and Personal Development, Teenagers and Parenting, Family and Relationships, Leadership and Mentorship, Excellence and Stewardship, Life Lessons and Reflections] }
+              - { label: Publication date, name: date, widget: datetime, time_format: false }
+              - { label: Summary, name: summary, widget: text }
+              - { label: Article, name: body, widget: markdown }
+              - { label: Related resources, name: relatedResources, widget: list, required: false, field: { label: Link, name: link, widget: string } }
+              - { label: Feature on homepage, name: featured, widget: boolean, default: false }
+              - { label: Publish, name: published, widget: boolean, default: false }
+
+  - name: events
+    label: Events
+    files:
+      - name: events
+        label: Event calendar
+        file: content/events.json
+        fields:
+          - label: Events
+            name: events
+            widget: list
+            summary: '{{fields.title}} · {{fields.date}}'
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: URL slug, name: slug, widget: string }
+              - { label: Programme, name: programme, widget: select, options: [Teens Camp Meeting, School Convergence, Fire in His Bones, Other TANM programme, Speaking engagement, Conference or workshop] }
+              - { label: Event category, name: category, widget: select, options: [Teens Camp Meeting, School Convergence, Fire in His Bones, Other TANM programme, Speaking engagement, Conferences and workshops] }
+              - { label: Description, name: description, widget: text }
+              - { label: Date, name: date, widget: datetime, time_format: false, required: false }
+              - { label: Venue, name: venue, widget: string, required: false }
+              - { label: Registration URL, name: registrationUrl, widget: string, required: false }
+              - { label: Event photograph, name: image, widget: image, required: false }
+              - { label: Highlights, name: highlights, widget: markdown, required: false }
+              - { label: Publish, name: published, widget: boolean, default: false }
+
+  - name: media
+    label: Media library
+    files:
+      - name: library
+        label: Media items
+        file: content/media.json
+        fields:
+          - label: Media items
+            name: items
+            widget: list
+            summary: '{{fields.title}}'
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Type, name: type, widget: select, options: [Video teaching, Sermon or message, Interview, Podcast episode, Television appearance, Event highlight, Featured conversation, Photo gallery] }
+              - { label: Description, name: description, widget: text, required: false }
+              - { label: YouTube video ID, name: youtubeId, widget: string, required: false }
+              - { label: External media URL, name: url, widget: string, required: false }
+              - { label: Photograph, name: image, widget: image, required: false }
+              - { label: Publish, name: published, widget: boolean, default: false }
+
+  - name: testimonials
+    label: Testimonials
+    files:
+      - name: testimonials
+        label: Approved testimonies
+        file: content/testimonials.json
+        fields:
+          - label: Testimonials
+            name: testimonials
+            widget: list
+            summary: '{{fields.name}} · {{fields.source}}'
+            fields:
+              - { label: Testimony, name: quote, widget: text }
+              - { label: Name, name: name, widget: string }
+              - { label: Role or context, name: source, widget: string, required: false }
+              - { label: Publish on website, name: approved, widget: boolean, default: false }
+              - { label: Feature on homepage, name: featured, widget: boolean, default: false }
+
+  - name: ministries_and_platforms
+    label: Ministries and platforms
+    files:
+      - name: ministries
+        label: Ministry directory
+        file: content/ministries.json
+        fields:
+          - label: Ministries
+            name: ministries
+            widget: list
+            summary: '{{fields.name}}'
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Classification, name: type, widget: select, options: [Ministry, Platform] }
+              - { label: Summary, name: summary, widget: text }
+              - { label: Full description, name: body, widget: markdown, required: false }
+              - { label: Public link, name: url, widget: string, required: false }

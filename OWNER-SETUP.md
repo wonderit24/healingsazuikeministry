@@ -23,10 +23,15 @@ The signup form asks visitors to consent and explains that they can unsubscribe.
 
 ## Administrator and content editing
 
-The current public website is static; it does not yet include a secure `/admin` login. A repository-based CMS such as Decap CMS can manage articles, event records, books, media and page copy, but publishing it safely requires the owner to connect an authenticated CMS/OAuth service to the GitHub repository. Do not put a GitHub token, OAuth client secret or CMS service secret in public website files.
+The website includes a Decap CMS editor at `/admin/`. The owner must connect it to an authenticated Decap Turbo site before anyone can sign in. Keep the CMS site ID in the configuration, and never put a GitHub token, OAuth client secret or other private service secret in public website files.
 
-After the owner selects and connects a CMS/OAuth provider, the CMS needs collections for pages, articles, events, books/resources, media, testimonials, ministry details, platforms and contact/settings; photo uploads should go into the siteâ€™s image assets. Restrict CMS access to named administrators. Confirm backups and branch protection in GitHub.
+1. Create a Decap Turbo site and connect the GitHub repository `wonderit24/healingsazuikeministry` on the `main` branch.
+2. In Decap Turbo, allow the production admin URL `https://healingsazuikeministry.vercel.app/admin/` and assign access only to named editors.
+3. Copy the Turbo site ID from the site overview into `backend.turbo_site_id` in `admin/config.yml`, replacing `SET_AFTER_OWNER_SETUP`, then commit and push that change.
+4. Open `/admin/` on the deployed site and sign in through the authorised provider. The editor manages site copy, additional pages, books and resources, articles, events, media, testimonials, ministries and platforms.
+5. Editors can save drafts and publish through the editorial workflow. Uploaded images are stored in `public/images/uploads/`; GitHub commits trigger Vercel deployments.
 
+The owner must complete this account connection; the repository does not contain the owner’s Decap Turbo site ID or login approval. Keep GitHub backups enabled and review edits before publishing.
 ## Owner-approved material still needed
 
 - A fuller personal biography and approved vision/mission wording, if different from the supplied brief.

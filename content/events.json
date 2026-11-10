@@ -1,0 +1,10 @@
+{
+  "events": [
+    { "title": "Teens Camp Meeting", "slug": "teens-camp-meeting", "programme": "Teens Camp Meeting", "description": "A TANM gathering for teenagers, discipleship and fellowship.", "date": "", "venue": "", "registrationUrl": "", "image": "", "highlights": "", "published": false },
+    { "title": "School Convergence", "slug": "school-convergence", "programme": "School Convergence", "description": "A Teens Aflame Network school outreach and convergence programme.", "date": "", "venue": "", "registrationUrl": "", "image": "", "highlights": "", "published": false },
+    { "title": "Fire in His Bones", "slug": "fire-in-his-bones", "programme": "Fire in His Bones", "description": "A ministry gathering in the Teens Aflame Network programme family.", "date": "", "venue": "", "registrationUrl": "", "image": "", "highlights": "", "published": false },
+    { "title": "Other TANM programmes", "slug": "other-tanm", "programme": "Other TANM programme", "description": "Discipleship, fellowship, evangelism and leadership development.", "date": "", "venue": "", "registrationUrl": "", "image": "", "highlights": "", "published": false },
+    { "title": "Speaking engagements", "slug": "speaking", "programme": "Speaking engagement", "description": "Church services, conferences, teenagers’ programmes, leadership sessions and workshops.", "date": "", "venue": "", "registrationUrl": "", "image": "", "highlights": "", "published": false },
+    { "title": "Conferences and workshops", "slug": "conferences", "programme": "Conference or workshop", "description": "Public engagements and opportunities to learn together.", "date": "", "venue": "", "registrationUrl": "", "image": "", "highlights": "", "published": false }
+  ]
+}

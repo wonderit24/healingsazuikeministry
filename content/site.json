@@ -1,0 +1,21 @@
+{
+  "fullName": "Healings Erhuvwuigho Azuike",
+  "homeIntroduction": "Healings Erhuvwuigho Azuike is a minister, author, leader, creative, entrepreneur, mentor and Realtor committed to building people, developing purposeful platforms and helping individuals grow into God’s design for their lives.",
+  "homeMission": "Through ministry, writing, mentorship, leadership, creative expression and enterprise, she is committed to raising people, strengthening families and building structures that create meaningful impact.",
+  "biography": "A fuller personal biography will be added when Healings supplies and approves those details.",
+  "vision": "To see individuals discover, develop and express God’s design for their lives, becoming people of purpose, character and meaningful influence.",
+  "mission": "To build people and purposeful platforms through ministry, teaching, writing, mentorship, creativity and enterprise.",
+  "publicEmail": "",
+  "publicPhone": "",
+  "tagline": "Building people and platforms for purposeful living.",
+  "navigation": [
+    { "label": "Articles", "url": "?page=articles" },
+    { "label": "Media Centre", "url": "?page=media" },
+    { "label": "Events", "url": "?page=events" },
+    { "label": "Platforms", "url": "?page=platforms" },
+    { "label": "Speaking & Invitations", "url": "?page=speaking" },
+    { "label": "Testimonials", "url": "?page=testimonials" },
+    { "label": "Press & Media", "url": "?page=press" },
+    { "label": "Partnerships", "url": "?page=partnerships" }
+  ]
+}

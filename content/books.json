@@ -1,0 +1,24 @@
+{
+  "books": [
+    { "title": "Scripted Life", "description": "", "audience": "", "cover": "", "purchaseUrl": "", "featured": false, "status": "To be confirmed" },
+    { "title": "Dear Teenager", "description": "", "audience": "", "cover": "", "purchaseUrl": "", "featured": false, "status": "To be confirmed" },
+    { "title": "Dear Teens Parent", "description": "", "audience": "", "cover": "", "purchaseUrl": "", "featured": false, "status": "To be confirmed" },
+    { "title": "Redefine", "description": "", "audience": "", "cover": "", "purchaseUrl": "", "featured": false, "status": "To be confirmed" },
+    { "title": "A Sailing Ship", "description": "", "audience": "", "cover": "", "purchaseUrl": "", "featured": false, "status": "To be confirmed" },
+    { "title": "Out With It", "description": "", "audience": "", "cover": "", "purchaseUrl": "", "featured": false, "status": "To be confirmed" },
+    { "title": "Not Alone", "description": "", "audience": "", "cover": "", "purchaseUrl": "", "featured": false, "status": "To be confirmed" },
+    { "title": "As I Am Reminded", "description": "", "audience": "", "cover": "", "purchaseUrl": "", "featured": false, "status": "To be confirmed" },
+    { "title": "The Balance of Life", "description": "", "audience": "", "cover": "", "purchaseUrl": "", "featured": false, "status": "To be confirmed" },
+    { "title": "The Becoming", "description": "", "audience": "", "cover": "", "purchaseUrl": "", "featured": false, "status": "To be confirmed" },
+    { "title": "Every Naira Has an Assignment", "description": "", "audience": "", "cover": "", "purchaseUrl": "", "featured": false, "status": "To be confirmed" }
+  ],
+  "growthDietResources": [
+    { "title": "Daily devotional materials", "description": "A 365-day devotional and spiritual growth resource.", "url": "https://mygrowth-app.vercel.app", "file": "" },
+    { "title": "Bible study resources", "description": "", "url": "", "file": "" },
+    { "title": "Annual Bible reading plans", "description": "", "url": "", "file": "" },
+    { "title": "Monthly study themes", "description": "", "url": "", "file": "" },
+    { "title": "Confessions and declarations", "description": "", "url": "", "file": "" },
+    { "title": "Personal growth resources", "description": "", "url": "", "file": "" }
+  ],
+  "freeResources": []
+}

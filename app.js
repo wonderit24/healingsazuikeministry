@@ -1,6 +1,6 @@
 const main = document.querySelector('#main');
 const requestedPage = new URLSearchParams(window.location.search).get('page') || 'home';
-const routes = ['home', 'about', 'ministries', 'tanm', 'campus', 'heam', 'work', 'articles', 'media', 'events', 'teens-camp-meeting', 'school-convergence', 'fire-in-his-bones', 'other-tanm', 'conferences', 'books', 'platforms', 'speaking', 'testimonials', 'press', 'partnerships', 'contact'];
+const routes = ['home', 'about', 'ministries', 'tanm', 'campus', 'heam', 'work', 'articles', 'article', 'media', 'events', 'event', 'custom', 'teens-camp-meeting', 'school-convergence', 'fire-in-his-bones', 'other-tanm', 'conferences', 'books', 'platforms', 'speaking', 'testimonials', 'press', 'partnerships', 'contact'];
 const page = routes.includes(requestedPage) ? requestedPage : 'not-found';
 
 const pageInfo = {
@@ -11,8 +11,11 @@ const pageInfo = {
   heam: ['Healings Erhuvwuigho Azuike Ministry', 'An umbrella for purposeful ministry.', 'The overarching ministry framework associated with Healings’ vision and ministry work.'],
   work: ['My Work', 'People, platforms and purposeful service.', 'Explore Healings’ ministry, writing, speaking, mentorship, creative enterprise and professional work.'],
   articles: ['Articles', 'Ideas for a life lived with purpose.', 'Reflections on faith, personal growth, family, leadership, mentorship and stewardship.'],
+  article: ['Article', 'A reflection for the journey.', 'Read the latest writing from Healings E. Azuike.'],
   media: ['Media Centre', 'Conversations and resources that shape lives.', 'Explore teaching, preaching, interviews, conversations, ministry highlights and approved photographs.'],
   events: ['Events', 'Come together. Grow together.', 'Ministry gatherings, teaching programmes, conferences and speaking engagements.'],
+  event: ['Event information', 'Gather, learn and grow.', 'Information about ministry events and public engagements.'],
+  custom: ['Page', 'More from Healings E. Azuike.', 'Additional information from the HEAM website.'],
   books: ['Books & Resources', 'Resources for every season of growth.', 'Books, devotionals, studies and practical resources for a life shaped by faith and purpose.'],
   platforms: ['Platforms', 'Platforms built to serve people.', 'Conversation, discipleship, creative media and enterprise platforms developed or hosted by Healings.'],
   speaking: ['Speaking & Invitations', 'Invite Healings to your next gathering.', 'For churches, conferences, teenagers’ programmes, leadership sessions, interviews and workshops.'],
@@ -78,6 +81,9 @@ const pages = {
   'fire-in-his-bones': eventPage('Fire in His Bones', 'A ministry gathering in the Teens Aflame Network programme family.'),
   'other-tanm': eventPage('Other TANM programmes', 'Discipleship, fellowship, evangelism and leadership development.'),
   conferences: eventPage('Conferences and workshops', 'Public engagements and opportunities to learn together.'),
+  article: `${pageHero('article')}<article class="event-detail" id="article-content"><p>Loading this article…</p></article>`,
+  event: `${pageHero('event')}<article class="event-detail" id="event-content"><p>Loading event information…</p></article>`,
+  custom: `${pageHero('custom')}<article class="event-detail" id="custom-content"><p>Loading page…</p></article>`,
 
   books: `${pageHero('books')}<label class="sr-only" for="book-search">Search the book catalogue</label><input class="book-search" id="book-search" type="search" placeholder="Search the book catalogue…"><div class="compact-grid" id="book-grid">${books.map((x,i)=>`<article class="book-card" data-title="${x.toLowerCase()}"><span class="book-index">${String(i+1).padStart(2,'0')}</span><h3>${x}</h3><p>Publication details, description, audience and title-specific purchase link to be confirmed.</p></article>`).join('')}</div><div class="outbound-list store-link"><a href="https://selar.co/m/Streams" target="_blank" rel="noopener noreferrer">Browse the Streams store on Selar ↗</a></div><p class="notice">The catalogue includes titles supplied for the website. Publication status, book descriptions, intended audience, covers and direct purchase links need confirmation before purchase buttons are added.</p><h2 class="section-divider">Growth Diet</h2><p class="page-lead">A Christian growth and discipleship resource with daily devotional teaching and practical application.</p><div class="compact-grid">${['Daily devotional materials','Bible study resources','Annual Bible reading plans','Monthly study themes','Confessions and declarations','Personal growth resources'].map((x,i)=>`<article class="content-card"><span class="card-topline">GROWTH DIET · 0${i+1}</span><h3>${x}</h3><p>Explore Growth Diet resources through the app.</p></article>`).join('')}</div><a class="button-primary" href="https://mygrowth-app.vercel.app" target="_blank" rel="noopener noreferrer">Open Growth Diet <span aria-hidden="true">↗</span></a><h2 class="section-divider">Free resources</h2><p class="empty-state">Study materials, reading plans and downloadable resources will be added when the approved files are available.</p>`,
 
@@ -160,7 +166,7 @@ document.querySelectorAll('[data-event-filter]').forEach((button) => button.addE
   document.querySelectorAll('[data-event-filter]').forEach((item) => item.classList.toggle('is-active', item === button));
   const filter = button.dataset.eventFilter;
   const eventCards = [...document.querySelectorAll('[data-event-status]')];
-  eventCards.forEach((item) => { item.hidden = filter !== 'all'; });
+  eventCards.forEach((item) => { item.hidden = filter !== 'all' && item.dataset.eventStatus !== filter; });
   const empty = document.querySelector('#event-empty');
   if (empty) empty.hidden = filter === 'all' || eventCards.length === 0;
 }));

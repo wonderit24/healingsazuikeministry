@@ -1,0 +1,12 @@
+{
+  "ministries": [
+    { "name": "Healings Erhuvwuigho Azuike Ministry (HEAM)", "type": "Ministry", "summary": "The overarching ministry framework through which related ministry expressions and initiatives are coordinated.", "body": "", "url": "" },
+    { "name": "Teens Aflame Network Ministry (TANM)", "type": "Ministry", "summary": "A para-church ministry committed to raising teenagers consecrated unto the Lord.", "body": "Established in 2011. Motto: Spreading the Light (Matthew 5:16). Mandate: Preserving the Generation Next.", "url": "https://t.me/TEENSAFLAME01" },
+    { "name": "Aflame Network Campus Church", "type": "Ministry", "summary": "The campus ministry expression in the Aflame Network family.", "body": "", "url": "" },
+    { "name": "Shape Space with Healings", "type": "Platform", "summary": "Conversations that shape lives.", "body": "A space for honest conversations about life, faith, family, purpose and becoming.", "url": "https://www.youtube.com/@shapespacewithhealings" },
+    { "name": "Growth Diet", "type": "Platform", "summary": "A Christian growth and discipleship resource.", "body": "", "url": "https://mygrowth-app.vercel.app" },
+    { "name": "Streams Enterprises", "type": "Platform", "summary": "Creative services, project management, business support and real estate.", "body": "", "url": "https://selar.co/m/Streams" },
+    { "name": "Streamscartoonnetwork TV", "type": "Platform", "summary": "A creative media and content platform.", "body": "", "url": "" },
+    { "name": "Heart-to-Heart Conversations", "type": "Platform", "summary": "A conversation platform hosted by Healings E. Azuike.", "body": "", "url": "" }
+  ]
+}
