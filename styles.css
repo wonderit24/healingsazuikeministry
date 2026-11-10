@@ -18,3 +18,58 @@
 .portrait-gallery img{height:100%;width:100%;object-fit:contain;object-position:center bottom}
 .portrait-gallery figcaption{position:absolute;right:0;bottom:0;padding:9px 13px;background:white;color:var(--navy);font-size:9px;letter-spacing:.05em}
 @media(max-width:700px){.about-profile{grid-template-columns:1fr;gap:16px;padding:18px}.about-profile-photo{height:min(95vw,390px)}.about-profile-copy{padding:8px 3px 16px}.portrait-gallery{gap:10px}.portrait-gallery figure{height:245px}}
+.nav-dropdown{position:relative;height:100%;display:flex;align-items:center}
+.nav-dropdown summary{list-style:none;cursor:pointer;font-size:11px;font-weight:500}
+.nav-dropdown summary::-webkit-details-marker{display:none}
+.nav-dropdown summary span{margin-left:3px;color:var(--brown)}
+.nav-dropdown[open] summary,.nav-dropdown summary:hover{color:#987a5c}
+.nav-dropdown-menu{position:absolute;z-index:20;top:calc(100% - 12px);right:-35px;width:240px;padding:10px;background:white;border:1px solid var(--line);box-shadow:0 16px 38px #182b4518;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.nav-dropdown-menu a{padding:9px 8px;font-size:10px;line-height:1.45}
+.nav-dropdown-menu a:hover,.nav-dropdown-menu a.active{background:#f3f0ea;color:#826849}
+.content-card-link{display:block;position:relative;padding-bottom:42px}
+.content-card-link .pathway-arrow{position:absolute;left:28px;bottom:18px}
+.section-wrap.section-tint{width:100%;max-width:none;padding-right:max(calc((100vw - var(--wrap))/2),5%);padding-left:max(calc((100vw - var(--wrap))/2),5%);background:#f1eee8}
+.empty-state{max-width:720px;padding:22px 24px;background:white;border:1px solid var(--line);color:#716e67;font-size:12px;line-height:1.85}
+.content-status{display:inline-block;margin-top:12px;color:#967b5d;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.filter-button{padding:8px 12px;border:1px solid #dfdbd2;background:white;color:#5c5851;cursor:pointer;font-size:10px;transition:all .2s}
+.filter-button:hover,.filter-button.is-active{border-color:var(--navy);background:var(--navy);color:white}
+.article-tools{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.article-tools .book-search{margin-bottom:15px}
+.article-category[hidden],.book-card[hidden],.media-card[hidden],.event-card[hidden]{display:none}
+.ministry-motto{margin:0 0 24px;padding:32px;display:flex;align-items:center;flex-direction:column;background:var(--navy);color:white;text-align:center}
+.ministry-motto span{color:#dbc19e;font-size:9px;letter-spacing:.18em;text-transform:uppercase}
+.ministry-motto strong{margin:6px 0;font:500 clamp(24px,4vw,35px)/1.25 var(--serif)}
+.ministry-motto small{color:#d4d4d0;font-size:11px}
+.ministry-motto .motto-divider{margin-top:24px}
+.event-detail{padding:32px;background:#fff;border:1px solid var(--line)}
+.event-detail h2{margin:0 0 14px;color:var(--navy);font:500 36px/1.2 var(--serif)}
+.event-detail>p{max-width:720px;color:#716e67;font-size:12px;line-height:1.9}
+.event-detail dl{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.event-detail dl div{padding:15px;background:#f4f1eb}
+.event-detail dt{color:#927a60;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.event-detail dd{margin:5px 0 0;color:var(--navy);font-size:12px}
+.event-detail-line{font-size:10px!important}
+.media-feature{margin:35px 0;padding:24px 30px;display:grid;grid-template-columns:1.4fr .6fr;align-items:center;gap:28px;background:#f1eee8;overflow:hidden}
+.media-feature img{display:block;width:100%;height:300px;object-fit:contain;object-position:center bottom}
+.press-gallery a{position:relative;display:flex;justify-content:center;overflow:hidden;background:#eee9e1}
+.press-gallery img{height:100%;width:100%;object-fit:contain}
+.press-gallery span{position:absolute;right:0;bottom:0;padding:9px 13px;background:white;color:var(--navy);font-size:9px}
+.testimonial-empty{max-width:740px;margin:auto;padding:44px 30px;background:white;border:1px solid var(--line);text-align:center}
+.testimonial-empty .book-index{margin:0 auto 20px;font-size:24px}
+.testimonial-empty h2{color:var(--navy);font:500 32px var(--serif)}
+.testimonial-empty p{color:#716e67;font-size:12px;line-height:1.9}
+.newsletter-band{padding:50px max(calc((100vw - var(--wrap))/2),5%);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:50px;background:#eeeae3}
+.newsletter-copy h2{margin:8px 0;color:var(--navy);font:500 clamp(29px,4vw,40px)/1.2 var(--serif)}
+.newsletter-copy p{max-width:460px;margin:0;color:#716e67;font-size:11px;line-height:1.8}
+.newsletter-form{display:grid;grid-template-columns:1fr auto;gap:11px;align-items:center}
+.newsletter-form>input{min-width:0;height:46px;padding:0 13px;border:1px solid #d8d3c9;background:white;font-size:11px}
+.newsletter-consent{grid-column:1/-1;display:flex;align-items:flex-start;gap:8px;color:#69665f;font-size:9px;line-height:1.5}
+.newsletter-consent input{margin:2px 0 0;accent-color:var(--navy)}
+.newsletter-form .button-primary{grid-column:2;grid-row:1;padding:0 14px;cursor:pointer}
+.newsletter-form .form-feedback{grid-column:1/-1}
+.honeypot{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
+.button-primary:disabled{opacity:.65;cursor:wait}
+.contact-form .text-link{grid-column:1/-1;justify-self:start}
+@media(max-width:980px){.nav-dropdown{height:auto;display:block}.nav-dropdown summary{padding:10px 0}.nav-dropdown-menu{position:static;width:100%;margin:2px 0 10px;box-shadow:none;grid-template-columns:1fr 1fr}.primary-nav.is-open .nav-dropdown{display:block}.primary-nav.is-open .nav-dropdown-menu a{padding:9px 6px}.newsletter-band{grid-template-columns:1fr;gap:22px}}
+@media(max-width:700px){.event-detail{padding:22px}.event-detail dl{grid-template-columns:1fr}.media-feature{grid-template-columns:1fr;padding:22px;gap:8px}.media-feature img{height:min(75vw,300px)}.article-tools{align-items:flex-start;flex-direction:column;gap:0}.newsletter-band{padding-top:42px;padding-bottom:42px}.newsletter-form{grid-template-columns:1fr auto}.newsletter-form>input{grid-column:1/-1}.newsletter-form .button-primary{grid-column:1;grid-row:3;justify-self:start}.newsletter-form .form-feedback{grid-row:4}.contact-form .text-link{grid-column:1}.ministry-motto{padding:27px 18px}}
