@@ -22,6 +22,7 @@ function safeImage(value) {
 function richText(value = '') {
   return String(value).split(/\n\s*\n/).map((paragraph) => {
     const safe = escapeHTML(paragraph.trim()).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>').replace(/\n/g, '<br>');
+    if (/^## /.test(paragraph.trim())) return `<h2>${escapeHTML(paragraph.trim().slice(3))}</h2>`;
     return safe ? `<p>${safe}</p>` : '';
   }).join('');
 }
@@ -52,6 +53,7 @@ function articleCard(item) {
 }
 
 function eventStatus(item) {
+  if (item.status === 'upcoming' || item.status === 'past') return item.status;
   const date = item.date ? new Date(item.date) : null;
   if (!date || Number.isNaN(date.valueOf())) return 'unconfirmed';
   return date.getTime() >= Date.now() ? 'upcoming' : 'past';
@@ -88,11 +90,21 @@ function applySiteContent(content) {
   if (content.fullName) {
     document.querySelectorAll('.wordmark-name').forEach((item) => { item.firstChild.textContent = content.fullName.toUpperCase(); });
   }
+  if (content.roles) document.querySelectorAll('.wordmark-name small, .hero-home .eyebrow, .hero-media-caption span').forEach((item) => { item.textContent = content.roles.replace(/\s*\|\s*/g, ' · ').toUpperCase(); });
   const homeParagraphs = document.querySelectorAll('.page-home .hero-description');
   if (content.homeIntroduction && homeParagraphs[0]) homeParagraphs[0].textContent = content.homeIntroduction;
   if (content.homeMission && homeParagraphs[1]) homeParagraphs[1].textContent = content.homeMission;
-  const biography = document.querySelector('.about-profile-copy p');
-  if (content.biography && !content.biography.startsWith('A fuller personal biography') && biography) biography.innerHTML = richText(content.biography);
+  const biography = document.querySelector('#about-biography');
+  if (content.biography && biography) biography.innerHTML = richText(content.biography);
+  const audioLink = document.querySelector('#audio-messages a[href*="t.me"]');
+  if (audioLink && safeURL(content.audioMessagesUrl)) audioLink.href = safeURL(content.audioMessagesUrl);
+  if (page === 'partnerships' && safeURL(content.partnershipPaymentUrl)) {
+    const hero = document.querySelector('.page-partnerships .page-hero');
+    if (hero && !document.querySelector('.partnership-support')) {
+      const paymentUrl = safeURL(content.partnershipPaymentUrl);
+      hero.insertAdjacentHTML('afterend', `<section class="partnership-support"><div><span class="feature-kicker">Partnership platform</span><h2>Partner with the ministry</h2><p>Your partnership supports the ministry’s work of building people and preserving generations. Pay securely through Monnify or scan the QR code.</p><a class="button-primary" href="${paymentUrl}" target="_blank" rel="noopener noreferrer">Partner through Monnify <span aria-hidden="true">↗</span></a></div><a class="partnership-qr-link" href="${paymentUrl}" target="_blank" rel="noopener noreferrer"><img src="public/images/healings-partnership-monnify-qr.jpeg" alt="Scan the Monnify QR code to partner with Healings Erhuvwuigho Azuike Ministry" loading="lazy"><span>Scan to partner securely with Monnify</span></a></section>`);
+    }
+  }
   document.querySelectorAll('.content-card').forEach((item) => {
     const label = item.querySelector('.card-topline')?.textContent.trim();
     if (label === 'VISION' && content.vision) item.querySelector('p').textContent = content.vision;
@@ -255,10 +267,17 @@ function applyDirectories(data) {
   }).join('');
   const platformsGrid = document.querySelector('.page-platforms .content-grid');
   const platforms = entries.filter((item) => item.type === 'Platform');
-  if (platformsGrid && platforms.length) platformsGrid.innerHTML = platforms.map((item) => {
+  const renderPlatform = (item, child = false) => {
     const url = safeURL(item.url);
-    return `<article class="content-card"><span class="card-topline">PLATFORM</span><h3>${escapeHTML(item.name)}</h3><p>${escapeHTML(item.summary || '')}</p>${item.body ? `<p>${escapeHTML(item.body)}</p>` : ''}${url ? `<a class="text-link" href="${url}" target="_blank" rel="noopener noreferrer">Visit platform ↗</a>` : ''}</article>`;
-  }).join('');
+    return `<article class="content-card"><span class="card-topline">${child ? `PART OF ${escapeHTML(item.parent)}` : 'PLATFORM'}</span><h3>${escapeHTML(item.name)}</h3><p>${escapeHTML(item.summary || '')}</p>${item.body ? `<p>${escapeHTML(item.body)}</p>` : ''}${url ? `<a class="text-link" href="${url}" target="_blank" rel="noopener noreferrer">${item.name === 'Partnership platform' ? 'Partner through Monnify ↗' : 'Visit platform ↗'}</a>` : ''}</article>`;
+  };
+  if (platformsGrid && platforms.length) {
+    const roots = platforms.filter((item) => !item.parent);
+    platformsGrid.outerHTML = roots.map((item) => {
+      const children = platforms.filter((child) => child.parent === item.name);
+      return `<section class="platform-group"><p class="platform-parent-label">${escapeHTML(item.name)}</p><div class="content-grid">${renderPlatform(item)}${children.map((child) => renderPlatform(child, true)).join('')}</div></section>`;
+    }).join('');
+  }
 }
 
 function applyCustomPage(data) {
