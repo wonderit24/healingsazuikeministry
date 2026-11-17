@@ -7,6 +7,47 @@
   if (currentPage === 'event') {
     document.body.className = 'page-event';
     document.querySelector('#main').innerHTML = '<div class="page-shell"><section class="page-hero"><div class="eyebrow">Event information</div><h1 class="page-heading">Event details</h1></section><article class="event-detail" id="event-content"><p>Loading event information…</p></article></div>';
+    const slug = new URLSearchParams(location.search).get('slug');
+    fetch('/content/events.json', { cache: 'no-cache' }).then((response) => response.ok ? response.json() : null).then((data) => {
+      const item = data?.events?.find((event) => event.slug === slug && event.published);
+      const target = document.querySelector('#event-content');
+      if (!target || !item) return;
+      target.replaceChildren();
+      const badge = document.createElement('span');
+      badge.className = 'event-badge';
+      badge.textContent = item.badge || (item.date ? new Intl.DateTimeFormat(undefined, { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(item.date)) : 'Coming soon');
+      const title = document.createElement('h2');
+      title.textContent = item.title;
+      const description = document.createElement('p');
+      description.textContent = item.description || '';
+      target.append(badge, title, description);
+      const details = document.createElement('dl');
+      const eventDate = item.date && !Number.isNaN(new Date(item.date).valueOf())
+        ? new Intl.DateTimeFormat(undefined, { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(item.date))
+        : 'To be announced';
+      [['Date', eventDate], ['Venue', item.venue || 'To be announced'], ['Registration', item.registrationUrl || 'Details to be announced']].forEach(([label, value]) => {
+        const row = document.createElement('div');
+        const term = document.createElement('dt');
+        term.textContent = label;
+        const detail = document.createElement('dd');
+        if (label === 'Registration' && /^https:\/\//i.test(value)) {
+          const registration = document.createElement('a');
+          registration.href = value;
+          registration.target = '_blank';
+          registration.rel = 'noopener noreferrer';
+          registration.textContent = 'Register ↗';
+          detail.append(registration);
+        } else detail.textContent = value;
+        row.append(term, detail);
+        details.append(row);
+      });
+      target.append(details);
+      const contact = document.createElement('a');
+      contact.className = 'button-primary';
+      contact.href = '?page=contact';
+      contact.textContent = 'Ask about this programme ↗';
+      target.append(contact);
+    }).catch(() => {});
   }
 
   const heroImage = document.querySelector('.hero-media-image img');
