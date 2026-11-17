@@ -1,0 +1,111 @@
+/* Responsive refinements and brand-aligned corrections. */
+.primary-nav > a,
+.nav-dropdown > summary {
+  font-size: 13px;
+}
+
+.primary-nav .nav-cta {
+  font-size: 12px;
+}
+
+.brand-logo {
+  width: 184px;
+  height: auto;
+  flex: 0 1 auto;
+  object-fit: contain;
+  border-radius: 0;
+  background: transparent;
+}
+
+.brand-roles {
+  color: var(--navy);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+.footer-brand .brand-logo {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+}
+
+.footer-col a,
+.footer-outbound {
+  font-size: 12px;
+}
+
+.footer-label {
+  font-size: 10px;
+}
+
+.event-card[data-event-status="upcoming"] .event-badge,
+.event-badge {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.hero-media {
+  height: 500px;
+  background: var(--paper);
+}
+
+.hero-media-image {
+  background: transparent;
+}
+
+.hero-media-image img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.mentorship-form-frame {
+  margin: 28px 0 18px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--white);
+}
+
+.mentorship-form-frame iframe {
+  display: block;
+  width: 100%;
+  min-height: 1050px;
+  border: 0;
+}
+
+@media (max-width: 760px) {
+  .site-header .brand-logo {
+    width: clamp(125px, 42vw, 160px);
+  }
+
+  .site-header .brand-roles {
+    display: none;
+  }
+
+  .primary-nav > a,
+  .nav-dropdown > summary {
+    font-size: 14px;
+  }
+
+  .primary-nav .nav-cta {
+    font-size: 13px;
+  }
+
+  .footer-main {
+    row-gap: 34px;
+  }
+
+  .hero-media {
+    height: clamp(360px, 105vw, 480px);
+  }
+
+  .mentorship-form-frame iframe {
+    min-height: 1200px;
+  }
+}

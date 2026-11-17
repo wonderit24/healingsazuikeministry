@@ -26,6 +26,7 @@ collections:
           - { label: Website tagline, name: tagline, widget: string }
           - { label: Roles shown with Healings’ name, name: roles, widget: string }
           - { label: Telegram audio messages URL, name: audioMessagesUrl, widget: string, required: false }
+          - { label: MENTORSHIP responder form URL, name: mentorshipFormUrl, widget: string, required: false }
           - { label: Monnify partnership payment URL, name: partnershipPaymentUrl, widget: string, required: false }
           - label: Explore menu links
             name: navigation
@@ -138,6 +139,7 @@ collections:
               - { label: Description, name: description, widget: text }
               - { label: Date, name: date, widget: datetime, time_format: false, required: false }
               - { label: Event status, name: status, widget: select, options: [upcoming, past, unconfirmed], required: false }
+              - { label: Event date badge, name: badge, widget: string, required: false }
               - { label: Venue, name: venue, widget: string, required: false }
               - { label: Registration URL, name: registrationUrl, widget: string, required: false }
               - { label: Event photograph, name: image, widget: image, required: false }

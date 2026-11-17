@@ -44,6 +44,14 @@
       "url": "https://selar.co/m/Streams"
     },
     {
+      "name": "Books & Written Resources",
+      "type": "Platform",
+      "summary": "Healings’ published books and written resources are available through the Streams shop.",
+      "body": "Browse the catalogue and check the Streams store for current availability.",
+      "url": "https://selar.co/m/Streams",
+      "parent": "Streams Enterprises"
+    },
+    {
       "name": "Streamscartoonnetwork TV",
       "type": "Platform",
       "summary": "A creative media and content platform.",
